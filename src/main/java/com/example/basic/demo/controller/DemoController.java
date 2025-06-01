@@ -14,20 +14,27 @@ public class DemoController {
 
     // Handle POST RequestBody
     @PostMapping("/createUser")
-    public ResponseEntity<String> createUser(@RequestBody User user) {
+    public ResponseEntity<String> createUser(
+            @RequestBody User user
+    ) {
         String result = "User created with name: " + user.getName() + " with age: " + user.getAge();
         return ResponseEntity.ok(result);
     }
 
     // Handle GET with PathVariable
     @GetMapping("/user/{id}")
-    public String getUserById(@PathVariable("id") int id) {
+    public String getUserById(
+            @PathVariable("id") int id
+    ) {
         return "Fetching user with id: " + id;
     }
 
     // Handle GET with RequestParam (Query Parameter)
     @GetMapping("/search")
-    public String searchUser(@RequestParam("name") String name, @RequestParam(value = "age", required = false) Integer age) {
+    public String searchUser(
+            @RequestParam("name") String name,
+            @RequestParam(value = "age", required = false) Integer age
+    ) {
         return "found name: " + name + " with age: " + (age != null ? age: "Not provided");
     }
 }
